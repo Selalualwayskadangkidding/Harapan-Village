@@ -1,3 +1,4 @@
+import { useState } from "react";
 import IntroScene from "./scenes/IntroScene";
 
 function App() {
