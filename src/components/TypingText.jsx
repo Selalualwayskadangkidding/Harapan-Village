@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 
-const TypingText = ({ text, speed = 50 }) => {
+const TypingText = ({ text, speed = 50, onDone }) => {
   const [displayedText, setDisplayedText] = useState("");
 
   useEffect(() => {
     let i = 0;
     const audio = new Audio("/audio/typing.mp3");
 
-    // ⬇️ Reset teks sebelum mulai ketik ulang
     setDisplayedText("");
 
     const interval = setInterval(() => {
@@ -23,6 +22,7 @@ const TypingText = ({ text, speed = 50 }) => {
         clearInterval(interval);
         audio.pause();
         audio.currentTime = 0;
+        if (onDone) onDone();
       }
     }, speed);
 
@@ -31,7 +31,7 @@ const TypingText = ({ text, speed = 50 }) => {
       audio.pause();
       audio.currentTime = 0;
     };
-  }, [text, speed]);
+  }, [text, speed, onDone]);
 
   return (
     <p

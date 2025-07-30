@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import TypingText from "../components/typingText";
 
-const IntroScene = () => {
+const IntroScene = ({ onDone }) => {
   const [sceneIndex, setSceneIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const audioRef = useRef(null);
@@ -30,16 +30,8 @@ const IntroScene = () => {
     },
     {
       image: "/assets/image8car.png",
-      text: "IIa kembali menginjak gas, melaju pelan melewati jalan-jalan sempit kampung. Tak sadar, di pinggir jalan beberapa warga sibuk menebang pohon, Tapi Pikirannya terlalu penuh,matanya hanya tertuju pada tujuan rumahnya.",
-    },
-    {
-      image: "/assets/image9car.png",
-      text: "''Apa yang terjadi di kampung ini?''",
-    },
-    {
-      image: "/assets/image10car.png",
-      text: "''Aku harus mencari tahu.''",
-    },
+      text: "Ia kembali menginjak gas, melaju pelan melewati jalan-jalan sempit kampung. Tak sadar, di pinggir jalan beberapa warga sibuk menebang pohon, Tapi Pikirannya terlalu penuh,matanya hanya tertuju pada tujuan rumahnya.",
+    }
 
   ];
 
@@ -72,10 +64,12 @@ const IntroScene = () => {
 
   const handleNextScene = () => {
     if (isTransitioning) return;
+
     if (sceneIndex >= scenes.length - 1) {
-      console.log("Lanjut ke scene berikutnya di game.");
+      onDone(); // ⬅️ Panggil callback dari App.jsx
       return;
-    }
+};
+    
 
     setIsTransitioning(true);
     setTimeout(() => {
