@@ -1,0 +1,12 @@
+{
+  "frameWidth": 64,
+  "frameHeight": 64,
+  "rows": {
+    "down": 0,
+    "up": 1,
+    "right": 2,
+    "left": 3
+  },
+  "framesPerDirection": 4,
+  "fps": 8
+}

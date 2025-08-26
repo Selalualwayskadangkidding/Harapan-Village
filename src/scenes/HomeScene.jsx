@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import SarangLaba from "../components/saranglaba";
 
 const HomeScene = ({ onEnterGame }) => {
   const [position, setPosition] = useState({ x: 300, y: 300 });
@@ -58,6 +59,7 @@ const HomeScene = ({ onEnterGame }) => {
         width: "100vw",
         height: "100vh",
         position: "relative",
+        overflow: "hidden",
       }}
     >
       {/* Portal balik */}
@@ -71,6 +73,18 @@ const HomeScene = ({ onEnterGame }) => {
           borderRadius: "50%",
           backgroundColor: "red",
           border: "2px solid white",
+        }}
+      />
+
+      {/* Sarang laba-laba */}
+      <SarangLaba
+        playerX={position.x}
+        playerY={position.y}
+        webX={600}
+        webY={200}
+        onCleaned={() => {
+          console.log("Sarang laba-laba berhasil dibersihkan!");
+          // Kamu bisa kasih reward di sini
         }}
       />
 
